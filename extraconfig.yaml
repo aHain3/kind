@@ -62,7 +62,7 @@ spec:
     app: http-echo
   ports:
   # Default port used by the image
-  - port: 5678
+  - port: 8080
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -74,25 +74,25 @@ spec:
   rules:
   - http:
       paths:
-      - pathType: Prefix
-        path: /foo(/|$)(.*)
-        backend:
-          service:
-            name: foo-service
-            port:
-              number: 8080
-      - pathType: Prefix
-        path: /bar(/|$)(.*)
-        backend:
-          service:
-            name: bar-service
-            port:
-              number: 8080
+      # - pathType: Prefix
+      #   path: /foo(/|$)(.*)
+      #   backend:
+      #     service:
+      #       name: foo-service
+      #       port:
+      #         number: 8080
+      # - pathType: Prefix
+      #   path: /bar(/|$)(.*)
+      #   backend:
+      #     service:
+      #       name: bar-service
+      #       port:
+      #         number: 8080
       - pathType: Prefix
         path: /lb(/|$)(.*)
         backend:
           service:
             name: lb-service
             port:
-              number: 5678
+              number: 8080
 ---
