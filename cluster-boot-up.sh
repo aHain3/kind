@@ -14,3 +14,4 @@ kubectl wait --namespace metallb-system \
 docker network inspect -f '{{.IPAM.Config}}' kind
 kubectl apply -f iprange.yaml
 kubectl apply -f extraconfig.yaml
+sh localregistry.sh
