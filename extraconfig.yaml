@@ -6,15 +6,16 @@ metadata:
     app: http-echo
 spec:
   containers:
-    image: localhost:5001/image:agn
-    imagePullPolicy: IfNotPresent
+    - name: foo-app
+      image: localhost:5001/agn:v15
+      imagePullPolicy: IfNotPresent
   # - command:
   #   - /agnhost
   #   - netexec
   #   - --http-port
   #   - "8080"
   #   image: registry.k8s.io/e2e-test-images/agnhost:2.39
-    name: foo-app
+
 ---
 # kind: Service
 # apiVersion: v1
@@ -35,15 +36,17 @@ metadata:
     app: http-echo
 spec:
   containers:
-    image: localhost:5001/image:agn
-    imagePullPolicy: IfNotPresent
+    - name: bar-app
+      image: localhost:5001/agn:v15
+      imagePullPolicy: IfNotPresent
+      
   # - command:
   #   - /agnhost
   #   - netexec
   #   - --http-port
   #   - "8080"
   #   image: registry.k8s.io/e2e-test-images/agnhost:2.39
-    name: bar-app
+
 ---
 # kind: Service
 # apiVersion: v1
